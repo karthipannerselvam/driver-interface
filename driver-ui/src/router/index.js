@@ -1,17 +1,16 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/login.vue';
 import DriverDetail from '../views/DriverDetail.vue';
-
-Vue.use(VueRouter);
+import next from '../views/next.vue';
 
 const routes = [
     { path: '/', name: 'Login', component: Login },
-    { path: '/driver/:id', name: 'DriverDetail', component: DriverDetail, props: true }
+    { path: '/driver/:id', name: 'DriverDetail', component: DriverDetail, props: true },
+    { path: '/driver/:id/journey', name: 'JourneyDetails', component: next, props: true } // New route
 ];
 
-const router = new VueRouter({
-    mode: 'history',
+const router = createRouter({
+    history: createWebHistory(),
     routes
 });
 
