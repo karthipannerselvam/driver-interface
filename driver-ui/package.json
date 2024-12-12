@@ -9,6 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "module": "^1.2.5",
+    "mongoose": "^8.8.4",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
