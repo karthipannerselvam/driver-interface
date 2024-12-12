@@ -1,23 +1,18 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import Login from '../views/login.vue';
 import DriverDetail from '../views/DriverDetail.vue';
 
+Vue.use(VueRouter);
 
-const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    routes: [
-        {
-            path: '/',
-            name: 'Login',
-            component: Login
-        },
-        {
-            path: '/driver/:id',
-            name: 'DriverDetail',
-            component: DriverDetail,
-            props: true
-        }
-    ]
+const routes = [
+    { path: '/', name: 'Login', component: Login },
+    { path: '/driver/:id', name: 'DriverDetail', component: DriverDetail, props: true }
+];
+
+const router = new VueRouter({
+    mode: 'history',
+    routes
 });
 
 export default router;
