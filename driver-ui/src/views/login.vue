@@ -1,51 +1,54 @@
 <template>
   <div class="login-container">
-      <h1>Login</h1>
-      <form @submit.prevent="handleLogin">
-          <div>
-              <label for="username">Username:</label>
-              <input v-model="username" id="username" type="text" required />
-          </div>
-          <div>
-              <label for="password">Password:</label>
-              <input v-model="password" id="password" type="password" required />
-          </div>
-          <button type="submit">Login</button>
-          <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-      </form>
+    <h1>Login</h1>
+    <form @submit.prevent="handleLogin">
+      <div>
+        <label for="username">Username:</label>
+        <input v-model="username" id="username" type="text" required />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input v-model="password" id="password" type="password" required />
+      </div>
+      <button type="submit">Login</button>
+      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+    </form>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 export default {
   data() {
-      return {
-          username: '',
-          password: '',
-          errorMessage: ''
-      };
+    return {
+      username: '',
+      password: '',
+      errorMessage: ''
+    };
   },
   methods: {
-      async handleLogin() {
-          try {
-              const response = await axios.post('http://localhost:5500/api/login', {
-                  username: this.username,
-                  password: this.password
-              });
+    async handleLogin() {
+      try {
+        // Mock API for login (replace with your actual API endpoint)
+        const response = await axios.post('http://localhost:5500/api/login', {
+          username: this.username,
+          password: this.password
+        });
 
-              if (response.data.success) {
-                  this.$router.push({ name: 'DriverDetail', params: { id: response.data.driverId } });
-              }
-          } catch (error) {
-              if (error.response && error.response.status === 401) {
-                  this.errorMessage = 'Invalid username or password';
-              } else {
-                  this.errorMessage = 'Server error. Please try again later.';
-              }
-          }
+        if (response.data.success) {
+          // Navigate to the driver details page with the driverId from the response
+          this.$router.push({ name: 'DriverDetail', params: { id: response.data.driverId } });
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          this.errorMessage = 'Invalid username or password';
+        } else {
+          this.errorMessage = 'Server error. Please try again later.';
+        }
       }
+    }
   }
 };
 </script>
