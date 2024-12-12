@@ -22,6 +22,12 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
+const JourneySchema = new mongoose.Schema({
+    time:String,
+    origin:String,
+    Destination:String,
+})
+
 // Authentication endpoint
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
@@ -38,6 +44,22 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
+// Get driver details by driverId
+app.get('/users/:id', async (req, res) => {
+    try {
+        const driver = await User.find({ driverId: req.params.id });
+
+        if (!driver) {
+            return res.status(404).json({ message: 'Driver not found' });
+        }
+
+        return res.json(driver);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Server error' });
+    }
+});
+
 // Start the server
 const PORT = 5500;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => `console.log(Server running on port ${PORT})`);
