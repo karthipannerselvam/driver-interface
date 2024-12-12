@@ -123,50 +123,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    text-align: center;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .header button {
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  .additional-info {
-    margin-top: 20px;
-  }
-  
-  .map-container {
-    margin-top: 20px;
-  }
-  
-  .start-button {
-    margin-top: 20px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  .error {
-    color: red;
-    font-size: 1.2rem;
-  }
-  </style>
-  
+    background-color: #f9f9f9;
+    color: black;
+}
+</style>
