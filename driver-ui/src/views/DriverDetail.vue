@@ -1,19 +1,14 @@
 <template>
     <div class="driver-detail">
-        <h1>Driver Details</h1>
-        <p v-if="driver">Welcome, Driver {{ id }}. Your assigned details are:</p>
-        <ul v-if="driver">
-            <li><strong>ID:</strong> {{ driver.id }}</li>
-            <li><strong>Name:</strong> {{ driver.name }}</li>
-            <li><strong>Vehicle:</strong> {{ driver.vehicle }}</li>
-        </ul>
-        <p v-else>Driver not found.</p>
+        <h1>Driver Page</h1>
+        <p v-if="driver">Hello, {{ driver.name }}! Welcome to your dashboard.</p>
+        <p v-else>Hello! It seems we couldn't find your details.</p>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['id'],
+    props: ['id'], // User's ID is passed as a prop
     data() {
         return {
             drivers: {
@@ -24,6 +19,7 @@ export default {
     },
     computed: {
         driver() {
+            // Fetch the driver details based on the provided ID
             return this.drivers[this.id];
         }
     }
@@ -35,7 +31,11 @@ export default {
     max-width: 600px;
     margin: auto;
     padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #f9f9f9;
+    color: black;
 }
 </style>
